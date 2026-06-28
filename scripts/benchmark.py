@@ -5,7 +5,7 @@ Benchmark individual SearXNG engines for speed and result count.
 Usage:
     python3 scripts/benchmark.py [--query "test"] [--timeout 30]
 
-Requires a running SearXNG instance at http://localhost:8888
+Requires a running SearXNG instance at http://127.0.0.1:8888
 """
 
 import json
@@ -14,16 +14,11 @@ import sys
 import time
 
 WORKING_ENGINES = [
-    "360search", "abcnyheter", "ayo", "bing", "boardreader",
-    "bpb", "crowdview", "ddg definitions", "dogpile",
-    "duckduckgo web", "encyclosearch", "fynd", "gmx", "google",
-    "mojeek", "mwmbl", "openlibrary", "privacywall", "quark",
-    "reloado", "resulthunter", "searchch", "searchmysite",
-    "seznam", "sogou", "tusksearch", "vuhuv", "wiby", "wikimini",
-    "wikipedia", "wolframalpha", "yandex", "yep"
+    "bing", "yandex", "dogpile",
+    "gmx", "vuhuv", "privacywall"
 ]
 
-SEARXNG_URL = "http://localhost:8888"
+SEARXNG_URL = "http://127.0.0.1:8888"
 
 
 def benchmark_engine(engine: str, query: str, timeout: int = 30):

@@ -17,8 +17,8 @@ search:
   autocomplete_min: 4
   favicon_resolver: ''
   default_lang: auto
-  ban_time_on_fail: 5
-  max_ban_time_on_fail: 30
+  ban_time_on_fail: 10
+  max_ban_time_on_fail: 60
   suspended_times:
     SearxEngineAccessDenied: 180
     SearxEngineCaptcha: 3600
@@ -35,7 +35,7 @@ server:
   base_url: false
   limiter: false
   public_instance: false
-  secret_key: qGDJ4d1WSs5AzJyFWsfStQk--B_2OBPbAis90Tj0f9c
+  secret_key: changeme
   image_proxy: false
   http_protocol_version: '1.0'
   method: POST
@@ -146,24 +146,6 @@ engines:
   disabled: false
   timeout: 5.0
   weight: 2
-search:
-  safe_search: 0
-  autocomplete: ''
-  autocomplete_min: 4
-  favicon_resolver: ''
-  default_lang: auto
-  ban_time_on_fail: 10
-  max_ban_time_on_fail: 60
-  suspended_times:
-    SearxEngineAccessDenied: 180
-    SearxEngineCaptcha: 3600
-    SearxEngineTooManyRequests: 180
-    cf_SearxEngineCaptcha: 1296000
-    cf_SearxEngineAccessDenied: 86400
-    recaptcha_SearxEngineCaptcha: 604800
-  formats:
-  - html
-  - json
 doi_resolvers:
   oadoi.org: https://oadoi.org/
   doi.org: https://doi.org/
