@@ -30,6 +30,7 @@ COPY docker-entrypoint.sh ./
 RUN chmod +x docker-entrypoint.sh
 
 USER nextjs
+ENV HOME=/tmp
 EXPOSE 3000
 ENV PORT=3000
 ENV DATABASE_URL=file:./data/dev.db
