@@ -1,5 +1,5 @@
 declare module "react-syntax-highlighter" {
-  import { ComponentType, ReactNode } from "react";
+  import { ComponentType } from "react";
 
   interface SyntaxHighlighterProps {
     children: string | string[];
