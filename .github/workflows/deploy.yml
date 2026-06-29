@@ -93,4 +93,5 @@ jobs:
             sudo systemctl reload caddy 2>/dev/null || sudo systemctl enable --now caddy
 
             # pull and rebuild
+            sudo docker compose down
             sudo docker compose up -d --build
