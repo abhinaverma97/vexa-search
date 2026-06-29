@@ -9,12 +9,13 @@ export default async function DashboardPage() {
 
   const rawKeys = await prisma.apiKey.findMany({
     where: { userId: session.user.id },
-    select: { id: true, name: true, key: true, lastUsed: true, createdAt: true },
+    select: { id: true, name: true, lastUsed: true, createdAt: true },
     orderBy: { createdAt: "desc" },
   });
 
   const keys = rawKeys.map((k) => ({
     ...k,
+    key: null,
     lastUsed: k.lastUsed?.toISOString() ?? null,
     createdAt: k.createdAt.toISOString(),
   }));

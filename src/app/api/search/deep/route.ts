@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
 
   const { query, limit } = body;
 
-  if (typeof query !== "string" || query.length > 500) {
+  if (typeof query !== "string" || !query.trim() || query.length > 500) {
     return new Response(
       `event: error\ndata: ${JSON.stringify({ error: "Missing or invalid 'query' field" })}\n\n`,
       { status: 400, headers: { "Content-Type": "text/event-stream" } }

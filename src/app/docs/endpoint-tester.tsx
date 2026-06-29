@@ -9,7 +9,7 @@ interface EndpointTesterProps {
 
 export function EndpointTester({ mode }: EndpointTesterProps) {
   const [apiKey, setApiKey] = useState("");
-  const [query, setQuery] = useState("why do i loose on polymarket");
+  const [query, setQuery] = useState("why do i lose on polymarket");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<string | null>(null);

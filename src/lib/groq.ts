@@ -3,7 +3,7 @@ import Groq from "groq-sdk";
 function getGroq() {
   const key = process.env.GROQ_API_KEY;
   if (!key) throw new Error("GROQ_API_KEY is not set");
-  return new Groq({ apiKey: key });
+  return new Groq({ apiKey: key, timeout: 30_000 });
 }
 
 const MODEL = "llama-3.3-70b-versatile";
@@ -30,13 +30,16 @@ ${JSON.stringify(results, null, 2)}
 
 Return valid JSON with keys: summary (string), key_insights (string[]), result_relevance (array of {url: string, relevance: string})`;
 
-  const completion = await groq.chat.completions.create({
-    model: MODEL,
-    messages: [{ role: "user", content: prompt }],
-    response_format: { type: "json_object" },
-    temperature: 0.3,
-    max_tokens: 2048,
-  });
+  const completion = await groq.chat.completions.create(
+    {
+      model: MODEL,
+      messages: [{ role: "user", content: prompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.3,
+      max_tokens: 2048,
+    },
+    { timeout: 15_000 }
+  );
 
   const text = completion.choices[0]?.message?.content ?? "{}";
 
@@ -85,13 +88,16 @@ Also identify the most valuable sources and what each contributed.
 
 Return valid JSON with keys: report (string), sources (array of {url: string, title: string, key_findings: string})`;
 
-  const completion = await groq.chat.completions.create({
-    model: MODEL,
-    messages: [{ role: "user", content: prompt }],
-    response_format: { type: "json_object" },
-    temperature: 0.3,
-    max_tokens: 4096,
-  });
+  const completion = await groq.chat.completions.create(
+    {
+      model: MODEL,
+      messages: [{ role: "user", content: prompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.3,
+      max_tokens: 4096,
+    },
+    { timeout: 15_000 }
+  );
 
   const text = completion.choices[0]?.message?.content ?? "{}";
 

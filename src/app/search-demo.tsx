@@ -45,7 +45,7 @@ function SkeletonRows({ count = 3 }: { count?: number }) {
 export function SearchDemo() {
   const [mode, setMode] = useState<Mode>("search");
   const modeRef = useRef(mode);
-  const [query, setQuery] = useState("why do i loose on polymarket");
+  const [query, setQuery] = useState("why do i lose on polymarket");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<Result[]>([]);
