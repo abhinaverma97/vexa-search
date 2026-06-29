@@ -84,7 +84,7 @@ jobs:
               sudo tee -a /etc/caddy/Caddyfile > /dev/null << 'CADDYEOF'
 
             vexa.itsabhin.in {
-                reverse_proxy localhost:3000
+                reverse_proxy localhost:3001
             }
             CADDYEOF
             fi
