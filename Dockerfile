@@ -30,9 +30,5 @@ COPY --from=builder /app/prisma.config.ts ./
 
 COPY docker-entrypoint.sh ./
 RUN chmod +x docker-entrypoint.sh
-RUN corepack enable && pnpm add prisma@7.8.0
-USER nextjs
-EXPOSE 3000
-ENV PORT=3000
-ENV DATABASE_URL=file:./data/dev.db
+
 ENTRYPOINT ["./docker-entrypoint.sh"]
