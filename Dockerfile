@@ -1,5 +1,5 @@
 FROM node:22-slim AS base
-RUN apt-get update -y && apt-get install -y openssl gosu && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y openssl gosu build-essential python3 && rm -rf /var/lib/apt/lists/*
 
 FROM base AS deps
 WORKDIR /app
@@ -31,6 +31,7 @@ COPY --from=builder /app/prisma.config.ts ./
 COPY docker-entrypoint.sh ./
 RUN chmod +x docker-entrypoint.sh
 RUN corepack enable && pnpm add prisma@7.8.0
+RUN corepack enable && pnpm rebuild better-sqlite3
 
 EXPOSE 3000
 ENV PORT=3000

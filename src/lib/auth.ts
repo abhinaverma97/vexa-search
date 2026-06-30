@@ -12,6 +12,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     GitHub,
     Google({
       checks: ["pkce", "state"],
+      authorization: {
+        url: "https://accounts.google.com/o/oauth2/v2/auth",
+        params: { scope: "openid email profile" },
+      },
+      token: "https://oauth2.googleapis.com/token",
+      userinfo: "https://www.googleapis.com/oauth2/v3/userinfo",
     }),
   ],
   pages: {
