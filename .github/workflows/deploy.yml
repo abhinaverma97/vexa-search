@@ -59,19 +59,17 @@ jobs:
               cd /opt/vexa
             fi
 
-# write .env
-          cat > .env << ENVEOF
-          GROQ_API_KEY=$GROQ_API_KEY
-          AUTH_SECRET=$AUTH_SECRET
-          AUTH_GITHUB_ID=$AUTH_GITHUB_ID
-          AUTH_GITHUB_SECRET=$AUTH_GITHUB_SECRET
-          AUTH_GOOGLE_ID=$AUTH_GOOGLE_ID
-          AUTH_GOOGLE_SECRET=$AUTH_GOOGLE_SECRET
-          AUTH_URL=$AUTH_URL
-          NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
-          ENVEOF
-
-
+            # write .env
+            cat > .env << ENVEOF
+            GROQ_API_KEY=$GROQ_API_KEY
+            AUTH_SECRET=$AUTH_SECRET
+            AUTH_GITHUB_ID=$AUTH_GITHUB_ID
+            AUTH_GITHUB_SECRET=$AUTH_GITHUB_SECRET
+            AUTH_GOOGLE_ID=$AUTH_GOOGLE_ID
+            AUTH_GOOGLE_SECRET=$AUTH_GOOGLE_SECRET
+            AUTH_URL=$AUTH_URL
+            NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
+            ENVEOF
 
             # pull and rebuild
             sudo docker compose down
