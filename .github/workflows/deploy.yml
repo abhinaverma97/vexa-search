@@ -30,6 +30,7 @@ jobs:
       AUTH_GITHUB_SECRET: ${{ secrets.AUTH_GITHUB_SECRET }}
       AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
       AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
+      AUTH_URL: ${{ secrets.AUTH_URL }}
       NEXT_PUBLIC_APP_URL: "https://vexa.itsabhi.in"
     steps:
       - name: Deploy via SSH
@@ -38,7 +39,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          envs: GROQ_API_KEY, AUTH_SECRET, AUTH_GITHUB_ID, AUTH_GITHUB_SECRET, AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET, NEXT_PUBLIC_APP_URL
+          envs: GROQ_API_KEY, AUTH_SECRET, AUTH_GITHUB_ID, AUTH_GITHUB_SECRET, AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET, AUTH_URL, NEXT_PUBLIC_APP_URL
           script: |
             set -e
 
@@ -58,16 +59,17 @@ jobs:
               cd /opt/vexa
             fi
 
-            # write .env
-            cat > .env << ENVEOF
-            GROQ_API_KEY=$GROQ_API_KEY
-            AUTH_SECRET=$AUTH_SECRET
-            AUTH_GITHUB_ID=$AUTH_GITHUB_ID
-            AUTH_GITHUB_SECRET=$AUTH_GITHUB_SECRET
-            AUTH_GOOGLE_ID=$AUTH_GOOGLE_ID
-            AUTH_GOOGLE_SECRET=$AUTH_GOOGLE_SECRET
-            NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
-            ENVEOF
+# write .env
+          cat > .env << ENVEOF
+          GROQ_API_KEY=$GROQ_API_KEY
+          AUTH_SECRET=$AUTH_SECRET
+          AUTH_GITHUB_ID=$AUTH_GITHUB_ID
+          AUTH_GITHUB_SECRET=$AUTH_GITHUB_SECRET
+          AUTH_GOOGLE_ID=$AUTH_GOOGLE_ID
+          AUTH_GOOGLE_SECRET=$AUTH_GOOGLE_SECRET
+          AUTH_URL=$AUTH_URL
+          NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
+          ENVEOF
 
 
 

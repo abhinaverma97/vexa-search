@@ -16,12 +16,12 @@ command -v caddy >/dev/null 2>&1 || {
   sudo apt-get install -y caddy
 }
 
-if ! grep -q "vexa.itsabhin.in" /etc/caddy/Caddyfile 2>/dev/null; then
+if ! grep -q "vexa.itsabhi.in" /etc/caddy/Caddyfile 2>/dev/null; then
   echo "=== Adding vexa to Caddyfile ==="
   sudo tee -a /etc/caddy/Caddyfile > /dev/null << 'CADDYEOF'
 
-vexa.itsabhin.in {
-    reverse_proxy localhost:3000
+vexa.itsabhi.in {
+    reverse_proxy localhost:3001
 }
 CADDYEOF
 fi
